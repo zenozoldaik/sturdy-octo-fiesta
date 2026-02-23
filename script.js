@@ -117,3 +117,25 @@ contactForm?.addEventListener('submit', (e) => {
   contactOut.textContent = `شكرًا ${name}، تم استلام طلبك.`;
   contactForm.reset();
 });
+
+
+const siteLink = document.getElementById('siteLink');
+const copyLink = document.getElementById('copyLink');
+const copyOut = document.getElementById('copyOut');
+
+copyLink?.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(siteLink.value);
+    copyOut.textContent = 'تم نسخ الرابط بنجاح.';
+  } catch {
+    copyOut.textContent = 'تعذر النسخ التلقائي، انسخ الرابط يدويًا.';
+  }
+});
+
+const euServerBtn = document.getElementById('euServerBtn');
+const serverStatus = document.getElementById('serverStatus');
+euServerBtn?.addEventListener('click', () => {
+  serverStatus.textContent = 'الحالة الحالية: متصل بالسيرفر الأوروبي (Frankfurt - EU Central).';
+  euServerBtn.textContent = 'تم الاتصال';
+  euServerBtn.disabled = true;
+});
